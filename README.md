@@ -9,4 +9,5 @@ Some Zshell plugins are also required, which can be installed by running:
 ```shell
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
+brew install diff-so-fancy
 ```
