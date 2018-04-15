@@ -1,0 +1,33 @@
+## GENERAL ##
+alias st="open -a SourceTree"
+alias a="atom ."
+
+## GIT ##
+alias g-="git checkout -"
+alias ga="git add "
+alias gamend="git commit --amend --no-edit"
+alias gb="git branch --sort=-committerdate | head"
+alias gc="git commit"
+alias gcf="git commit --fixup"
+alias gcm="git checkout master"
+alias gd="git diff"
+alias gds="git diff --cached"
+alias gdd="git branch -d"
+alias gl="git log -n 15 | head -n 15"
+alias go="git checkout "
+alias gri="git rebase -i"
+alias grc="git rebase --continue"
+alias gs="git status "
+alias gsa="git stash apply"
+alias guncommit="git reset --soft HEAD^"
+
+## HEROKU ##
+alias hconfig="heroku config --remote"
+alias hc="heroku run rails c --remote"
+alias hm="heroku run rake db:migrate --remote"
+
+## POSTGRES ##
+alias pglog="tail -f /usr/local/var/postgres/server.log"
+# run this if getting an error starting postgres after os x crash
+alias pgdeletepid="rm /usr/local/var/postgres/postmaster.pid"
+alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"

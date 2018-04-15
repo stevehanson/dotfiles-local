@@ -1,0 +1,2 @@
+" Map jj to escape
+:imap jj <Esc>

@@ -1,0 +1,19 @@
+[alias]
+  a = add --all
+  uncommit = reset --soft HEAD^
+  amend = commit --amend --no-edit
+  c = commit
+  cf = commit --fixup
+  cm = checkout master
+  l = log
+  ll = log -n 15 | head -n 15
+  ri = rebase -i
+  rc = rebase --continue
+  wip = commit -m "WIP"
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
+[format]
+  pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[user]
+  name = Steve Hanson
+  email = shanson@thoughtbot.com

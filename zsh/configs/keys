@@ -1,0 +1,2 @@
+# switch to command mode with 'jj'
+bindkey -M viins 'jj' vi-cmd-mode
