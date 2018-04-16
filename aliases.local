@@ -26,11 +26,27 @@ alias hconfig="heroku config --remote"
 alias hc="heroku run rails c --remote"
 alias hm="heroku run rake db:migrate --remote"
 
+## MISC ##
+# update rbenv ruby definitions. I prefer the rbenv-update plugin to this
+alias update_rbenv="cd ~/.rbenv/plugins/ruby-build; git pull"
+
 ## POSTGRES ##
 alias pglog="tail -f /usr/local/var/postgres/server.log"
 # run this if getting an error starting postgres after os x crash
 alias pgdeletepid="rm /usr/local/var/postgres/postmaster.pid"
 alias pgstart="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+
+## RAILS ##
+alias rc="rails c"
+alias ms="make start"
+alias routes="rails routes"
+alias routesg="routes | grep"
+alias rdb="rails db:migrate"
+alias rdbt="rails db:migrate RAILS_ENV=test"
+alias rdbr="rails db:rollback"
+alias rdbrt="rails db:rollback RAILS_ENV=test"
+alias rdbs="rails db:migrate:status | tail -n 15"
+alias be="bundle exec"
 
 # alias "c {x}" to do "cd ~/dev/{x}" with tab completion
 c() { cd ~/dev/$1; }
