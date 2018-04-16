@@ -1,7 +1,18 @@
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+# Source private aliases and scripts (eg. client-specific) -- not in version control
+if [[ -s "$HOME/dotfiles-local/.zshrc.private" ]]; then
+  source "$HOME/dotfiles-local/.zshrc.private"
+fi
 
+# show auto-suggestions as dark grey
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 export TERM="xterm-256color"
+
+# add RBENV
 PATH=~/.rbenv/bin:~/.rbenv/bin/shims:$PATH
 eval "$(rbenv init -)"
+
+# add custom scripts to path
 PATH="$PATH:$HOME/dotfiles-local/scripts"
+
+
 export PATH
