@@ -11,8 +11,11 @@ export TERM="xterm-256color"
 PATH=~/.rbenv/bin:~/.rbenv/bin/shims:$PATH
 eval "$(rbenv init -)"
 
+# load NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 # add custom scripts to path
 PATH="$PATH:$HOME/dotfiles-local/scripts"
-
 
 export PATH
