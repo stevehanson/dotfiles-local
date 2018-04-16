@@ -1,4 +1,7 @@
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 
 export TERM="xterm-256color"
-export PATH="$PATH:$HOME/dotfiles-local/scripts"
+PATH=~/.rbenv/bin:~/.rbenv/bin/shims:$PATH
+eval "$(rbenv init -)"
+PATH="$PATH:$HOME/dotfiles-local/scripts"
+export PATH
