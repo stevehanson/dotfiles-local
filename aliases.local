@@ -1,6 +1,9 @@
 ## GENERAL ##
 alias st="open -a SourceTree"
 alias a="atom ."
+alias df="cd ~/dotfiles"
+alias dfl="cd ~/dotfiles-local"
+alias safe="mkdir .git/safe"
 
 ## GIT ##
 alias g-="git checkout -"
@@ -52,3 +55,15 @@ alias be="bundle exec"
 c() { cd ~/dev/$1; }
 _c() { _files -W ~/dev -/; }
 compdef _c c
+
+# Find which process is using 3000 or supplied port, then run kill -9 {pid}
+function ports() {
+  local port="${1:-3000}"
+  lsof -wni tcp:${port};
+}
+
+# Finds which process is using 3000 or supplied port and kills it
+function kill_port() {
+  local port="${1:-3000}"
+  kill -9 $(lsof -i tcp:${port} -t)
+}
