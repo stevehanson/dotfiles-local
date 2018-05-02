@@ -1,2 +1,40 @@
 " Map jj to escape
 :imap jj <Esc>
+
+" Copy file paths to system clipboard
+" relative path
+nnoremap <leader>cf :let @+=expand("%")<CR>
+" Copy rspec command for current file
+nnoremap <leader>cr :let @+="rspec " . expand("%")<CR>
+" absolute path (/something/src/foo.txt)
+nnoremap <leader>cF :let @+=expand("%:p")<CR>
+" filename (foo.txt)
+nnoremap <leader>ct :let @+=expand("%:t")<CR>
+" directory name (/something/src)
+nnoremap <leader>ch :let @+=expand("%:p:h")<CR>
+
+" Open file explorer in current directory
+nnoremap <leader>ff :Exp<CR>
+
+" Execute macros over all visually selected lines
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
+" use powerline fonts with airline
+" airline theme: powerlineish
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
+"let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+
+" Ctrlp - list open buffers
+nnoremap <C-b> :CtrlPBuffer<cr>
+
+" Enable Emmet in all modes
+let g:user_emmet_mode='a'
+let g:user_emmet_leader_key='<C-Z>'
+
