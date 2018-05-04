@@ -1,5 +1,11 @@
-" Map jj to escape
-:imap jj <Esc>
+" Make the 80 character column dark gray
+highlight ColorColumn ctermbg=239
+
+" Make the line numbers dark gray
+highlight LineNr ctermfg=244
+
+" Map jk to escape
+:imap jk <Esc>
 
 " Copy file paths to system clipboard
 " relative path
@@ -16,6 +22,10 @@ nnoremap <leader>ch :let @+=expand("%:p:h")<CR>
 " Open file explorer in current directory
 nnoremap <leader>ff :Exp<CR>
 
+" Command-/ to toggle comments
+nnoremap <C-_> <plug>NERDCommenterToggle
+vnoremap <C-_> <plug>NERDCommenterToggle
+
 " Execute macros over all visually selected lines
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
@@ -29,7 +39,7 @@ endfunction
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-"let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+let g:airline_section_z = airline#section#create(['linenr', ':%2v'])
 
 " Ctrlp - list open buffers
 nnoremap <C-b> :CtrlPBuffer<cr>
@@ -38,3 +48,6 @@ nnoremap <C-b> :CtrlPBuffer<cr>
 let g:user_emmet_mode='a'
 let g:user_emmet_leader_key='<C-Z>'
 
+" Remove "|" char in file split, change bg color
+set fillchars+=vert:\ 
+hi VertSplit ctermfg=236 ctermbg=236 guibg=#2c2c2c
