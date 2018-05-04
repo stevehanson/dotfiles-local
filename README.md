@@ -11,10 +11,8 @@ These dotfiles require some other software to be installed.
 ### Quick Install
 
 ```shell
-brew install diff-so-fancy zsh-autosuggestions zsh-syntax-highlighting rbenv
+brew install diff-so-fancy zsh-autosuggestions zsh-syntax-highlighting
 ```
-
-Then, install NVM as directed [on GitHub](https://github.com/creationix/nvm).
 
 ### Step-by-Step Install
 
@@ -49,19 +47,3 @@ brew install zsh-syntax-highlighting
 ```
 
 Source: [GitHub](https://github.com/zsh-users/zsh-syntax-highlighting)
-
-#### NVM
-
-A node version manager. To install, just run the install script as instructed on GitHub. No need to update the dotfiles after.
-
-Source: [GitHub](https://github.com/creationix/nvm)
-
-#### rbenv
-
-A Ruby version manager.
-
-```
-brew install rbenv
-```
-
-Source: [GitHub](https://github.com/rbenv/rbenv)
