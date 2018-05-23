@@ -84,7 +84,7 @@ nnoremap <leader>nt :NERDTreeToggle<CR>
 let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
 
 " Vim-Pencil
-let g:pencil#wrapModeDefault = 'soft' " don't insert newlines when wrapping
+let g:pencil#wrapModeDefault = 'hard' " don't insert newlines when wrapping
 " these are the defaults:
 " let g:pencil#mode_indicators = {'hard': '␍', 'auto': 'ª', 'soft': '⤸', 'off': '',}
 
