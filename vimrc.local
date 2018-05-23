@@ -1,11 +1,41 @@
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+
+if (has("autocmd"))
+  augroup colorextend
+    autocmd!
+    " Make Functions bold
+    autocmd ColorScheme * call onedark#extend_highlight("Function", { "cterm": "bold", "gui": "bold" })
+  augroup END
+endif
+
+let g:onedark_terminal_italics=1
+colorscheme onedark
+
+" Make comments italic
+highlight Comment cterm=italic
+" Make functions bold
+highlight Function cterm=bold
 " Make the 80 character column dark gray
 highlight ColorColumn ctermbg=239
 
-" Make the line numbers dark gray
-highlight LineNr ctermfg=244
-
 " Map jk to escape
 :imap jk <Esc>
+
+" auto-indent code when pasting with p
+" :nnoremap p ]p
+:nnoremap p p=`]
+
+" Allow using the mouse
+:set mouse=a
+
+" Persistent undo
+set undofile
+set undodir=$HOME/.vim/undo
+set undolevels=1000
+set undoreload=10000
 
 " Copy file paths to system clipboard
 " relative path
@@ -36,13 +66,36 @@ endfunction
 
 " use powerline fonts with airline
 " airline theme: powerlineish
+let g:airline_theme='onedark'
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline_section_z = airline#section#create(['linenr', ':%2v'])
+let g:airline_section_x = '%{PencilMode()}'
 
 " Ctrlp - list open buffers
 nnoremap <C-b> :CtrlPBuffer<cr>
+
+" NERDTree config
+nnoremap <C-t> :NERDTreeFind<CR>
+nnoremap <C-\> :NERDTreeToggle<CR>
+nnoremap <leader>nf :NERDTreeFocus<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+let NERDTreeStatusline="%{matchstr(getline('.'), '\\s\\zs\\w\\(.*\\)')}"
+
+" Vim-Pencil
+let g:pencil#wrapModeDefault = 'soft' " don't insert newlines when wrapping
+" these are the defaults:
+" let g:pencil#mode_indicators = {'hard': '␍', 'auto': 'ª', 'soft': '⤸', 'off': '',}
+
+augroup pencil
+  autocmd!
+  autocmd FileType md,markdown,mkd call pencil#init({ 'textwidth': 80 })
+  autocmd FileType text         call pencil#init()
+  autocmd Filetype git,gitcommit,gitsendemail,*commit*,*COMMIT*
+                            \   call pencil#init({ 'textwidth': 72 })
+                            \ | setl spell spl=en_us et sw=2 ts=2 noai
+augroup END
 
 " Enable Emmet in all modes
 let g:user_emmet_mode='a'
@@ -50,4 +103,4 @@ let g:user_emmet_leader_key='<C-Z>'
 
 " Remove "|" char in file split, change bg color
 set fillchars+=vert:\ 
-hi VertSplit ctermfg=236 ctermbg=236 guibg=#2c2c2c
+hi VertSplit ctermfg=236 ctermbg=236 guibg=#292B31

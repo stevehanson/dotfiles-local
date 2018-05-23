@@ -1,3 +1,6 @@
 # soften status bar color from harsh green to light gray
 set -g status-bg '#434656'
 set -g status-fg '#aaaaaa'
+
+set -g default-terminal 'tmux-256color'
+set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'

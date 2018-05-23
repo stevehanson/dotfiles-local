@@ -9,3 +9,10 @@ Plug 'mattn/emmet-vim'
 Plug 'mxw/vim-jsx'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
+
+" syntax themes
+Plug 'joshdick/onedark.vim'
