@@ -22,11 +22,18 @@ highlight Function cterm=bold
 highlight ColorColumn ctermbg=239
 
 " Map jk to escape
-:imap jk <Esc>
+:inoremap jk <Esc>
+
+" make j and k work better with wrapped text
+nnoremap j gj
+nnoremap k gk
 
 " auto-indent code when pasting with p
-" :nnoremap p ]p
 :nnoremap p p=`]
+
+" Reformat wrapping for paragraph
+nnoremap <leader>q gqip
+
 
 " Allow using the mouse
 :set mouse=a
@@ -36,6 +43,22 @@ set undofile
 set undodir=$HOME/.vim/undo
 set undolevels=1000
 set undoreload=10000
+
+" edit vimrc
+nnoremap <leader>ve :vsplit ~/dotfiles-local/vimrc.local<CR>
+nnoremap <leader>vs :source $MYVIMRC<CR>
+
+" Ale linter configuration
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'ruby': ['rubocop'],
+\}
+let g:ale_linters = {
+\   'javascript': ['eslint', 'prettier'],
+\   'ruby': ['ruby'],
+\}
+nnoremap <leader>ff :ALEFix<CR>
+
 
 " Copy file paths to system clipboard
 " relative path
@@ -48,9 +71,6 @@ nnoremap <leader>cF :let @+=expand("%:p")<CR>
 nnoremap <leader>ct :let @+=expand("%:t")<CR>
 " directory name (/something/src)
 nnoremap <leader>ch :let @+=expand("%:p:h")<CR>
-
-" Open file explorer in current directory
-nnoremap <leader>ff :Exp<CR>
 
 " Command-/ to toggle comments
 nnoremap <C-_> <plug>NERDCommenterToggle

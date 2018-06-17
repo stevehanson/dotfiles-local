@@ -14,6 +14,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
 Plug 'M4R7iNP/vim-inky'
+Plug 'AndrewRadev/splitjoin.vim'
 
 " syntax themes
 Plug 'joshdick/onedark.vim'
