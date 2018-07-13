@@ -1,11 +1,15 @@
 ## GENERAL ##
 alias st="open -a SourceTree"
 alias a="atom ."
-alias df="cd ~/dotfiles"
-alias dfl="cd ~/dotfiles-local"
 alias safe="mkdir .git/safe"
 alias vim="nvim"
 alias ssh='TERM=xterm-256color ssh'
+
+## EDITING DOTFILES ##
+alias df="cd ~/dotfiles"
+alias dfl="cd ~/dotfiles-local"
+alias vv="vim ~/dotfiles-local/vimrc.local"
+alias vvb="vim ~/dotfiles-local/vimrc.bundles.local"
 
 ## GIT ##
 alias g-="git checkout -"
@@ -24,6 +28,7 @@ alias gl="git log -n 15"
 alias go="git checkout "
 alias gri="git rebase -i"
 alias grc="git rebase --continue"
+alias grh="git reset --hard"
 alias gs="git status "
 alias gsa="git stash apply"
 alias guncommit="git reset --soft HEAD^"
@@ -37,9 +42,6 @@ alias hm="heroku run rake db:migrate --remote"
 ## MISC ##
 # update rbenv ruby definitions. I prefer the rbenv-update plugin to this
 alias update_rbenv="cd ~/.rbenv/plugins/ruby-build; git pull"
-
-## NPM ##
-alias fix_npm="watchman watch-del-all && rm -rf node_modules/ && yarn cache clean && yarn install && yarn start -- --reset-cache"
 
 ## POSTGRES ##
 alias pglog="tail -f /usr/local/var/postgres/server.log"
