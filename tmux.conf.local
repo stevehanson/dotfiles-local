@@ -1,6 +1,51 @@
-# soften status bar color from harsh green to light gray
+# use 256-color terminal with italics support
+set -g default-terminal 'tmux-256color-itlic'
+set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
+
+# allow using mouse
+setw -g mouse on
+
+bind r source-file ~/.tmux.conf
+
+# -- display -------------------------------------------------------------------
+
+set -g base-index 1         # start windows numbering at 1
+setw -g pane-base-index 1   # make pane numbering consistent with windows
+
+# soften status bar color
 set -g status-bg '#434656'
 set -g status-fg '#aaaaaa'
 
-set -g default-terminal 'tmux-256color'
-set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
+# -- navigation ----------------------------------------------------------------
+
+# split panes with '\' and '|' instead of '%' and '"'
+bind \ split-window -h
+bind | split-window -v
+unbind '"'
+unbind %
+
+# kill pane without the confirm prompt
+bind-key x kill-pane
+
+# switch windows with C-h and C-l
+unbind n
+unbind p
+bind -r C-h previous-window # select previous window
+bind -r C-l next-window     # select next window
+
+# resize panes using Alt-arrow without prefix
+bind -n M-Left resize-pane -L 2
+bind -n M-Right resize-pane -R 2
+bind -n M-Up resize-pane -U 2
+bind -n M-Down resize-pane -D 2
+
+# TPM Plugins -- not sure if this is working sourcing from here
+# Prefix + I  -- install new plugins
+# Prefix + U  -- update plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of
+# tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
