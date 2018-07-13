@@ -117,6 +117,10 @@ let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
 let g:airline_section_z = airline#section#create(['linenr', ':%2v'])
 " let g:airline_section_x = '%{PencilMode()}'
 
+" Tmuxline
+let g:tmuxline_preset = 'nightly_fox'
+let g:tmuxline_powerline_separators = 0
+
 " Ctrlp - list open buffers
 nnoremap <C-b> :CtrlPBuffer<cr>
 let g:ctrlp_show_hidden = 1

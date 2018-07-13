@@ -48,6 +48,7 @@ Plug 'honza/vim-snippets'
 " tmux integration
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
 
 " find, replace with odd plurals, eg ":%Sub/dog{,s}/child{,ren}/g"
 Plug 'tpope/vim-abolish'
