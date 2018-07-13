@@ -1,20 +1,68 @@
+" airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" text stuff
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'jiangmiao/auto-pairs'
+
+" searching
 Plug 'mileszs/ack.vim'
+Plug 'haya14busa/incsearch.vim'
+" multi-char "f" command using "s"
+" disabled while I figure out if I want to use
+" Plug 'justinmk/vim-sneak'
+" repeat f, F, t, T to match next. Supports across lines
+" Plug 'rhysd/clever-f.vim'
+
+" auto-apply editorconfig settings on save
 Plug 'editorconfig/editorconfig-vim'
+
+" code expansion via shortcuts
 Plug 'mattn/emmet-vim'
-Plug 'mxw/vim-jsx'
+
+" git status in gutter
 Plug 'airblade/vim-gitgutter'
+
+" comment/uncomment code blocks
 Plug 'scrooloose/nerdcommenter'
+
+" nerdtree file tree
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" markdown/zen writing
 Plug 'reedes/vim-pencil'
 Plug 'junegunn/goyo.vim'
 Plug 'M4R7iNP/vim-inky'
+
+" gS and gJ to switch between single and multi-line
 Plug 'AndrewRadev/splitjoin.vim'
+
+" snippets support and snippet repo
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" tmux integration
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
+
+" find, replace with odd plurals, eg ":%Sub/dog{,s}/child{,ren}/g"
+Plug 'tpope/vim-abolish'
+
+" autocomplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" language grammars
+Plug 'mxw/vim-jsx'
 
 " syntax themes
 Plug 'joshdick/onedark.vim'
