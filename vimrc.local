@@ -8,13 +8,23 @@ let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
-if (has("autocmd"))
-  augroup colorextend
-    autocmd!
-    " Make Functions bold
-    autocmd ColorScheme * call onedark#extend_highlight("Function", { "cterm": "bold", "gui": "bold" })
-  augroup END
-endif
+" Remove "|" char in file split, change bg color
+set fillchars+=vert:\ 
+hi VertSplit ctermfg=236 ctermbg=236 guibg=#292B31
+
+augroup shanson
+  autocmd!
+
+  " Set syntax based on file names
+  autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
+  autocmd BufRead,BufNewFile vimrc.local set filetype=vim
+  autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+  autocmd BufRead,BufNewFile aliases.local,zshrc.local,*/zsh/configs/* set filetype=sh
+
+
+  " Make Functions bold
+  autocmd ColorScheme * call onedark#extend_highlight("Function", { "cterm": "bold", "gui": "bold" })
+augroup END
 
 let g:onedark_terminal_italics=1
 colorscheme onedark
@@ -28,15 +38,15 @@ highlight ColorColumn ctermbg=239
 
 " -- General -------------------------------------------------------------------
 
+set mouse=a            " Allow using the mouse
+set clipboard=unnamed  " Use system clipboard
+
 " Map jk to escape
 inoremap jk <Esc>
 
 " make j and k work better with wrapped text
 nnoremap j gj
 nnoremap k gk
-
-" Allow using the mouse
-set mouse=a
 
 " auto-indent code when pasting with p
 nnoremap p p=`]
@@ -118,8 +128,14 @@ let g:airline_section_z = airline#section#create(['linenr', ':%2v'])
 " let g:airline_section_x = '%{PencilMode()}'
 
 " Tmuxline
-let g:tmuxline_preset = 'nightly_fox'
 let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '#(tmux-spotify-info)',
+      \'z'    : '%a %R',
+      \'options': { 'status-justify': 'left' }}
 
 " Ctrlp - list open buffers
 nnoremap <C-b> :CtrlPBuffer<cr>
@@ -178,8 +194,7 @@ function! Multiple_cursors_after()
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
-" clear search results highlight after search
-set hlsearch
+set hlsearch " clear search results highlight after search
 let g:incsearch#auto_nohlsearch = 1
 map n  <Plug>(incsearch-nohl-n)
 map N  <Plug>(incsearch-nohl-N)
@@ -188,6 +203,3 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
-" Remove "|" char in file split, change bg color
-set fillchars+=vert:\ 
-hi VertSplit ctermfg=236 ctermbg=236 guibg=#292B31
