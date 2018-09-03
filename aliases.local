@@ -3,7 +3,8 @@ alias st="open -a SourceTree"
 alias a="atom ."
 alias safe="mkdir .git/safe"
 alias vim="nvim"
-alias ssh='TERM=xterm-256color ssh'
+alias ssh="TERM=xterm-256color ssh"
+alias sz="source ~/.zshrc"
 
 ## EDITING DOTFILES ##
 alias df="cd ~/dotfiles"
@@ -14,6 +15,7 @@ alias vvb="vim ~/dotfiles-local/vimrc.bundles.local"
 ## GIT ##
 alias g-="git checkout -"
 alias ga="git add "
+alias gp="git p"
 alias gamend="git commit --amend --no-edit"
 alias gb="git branch --sort=-committerdate --color | head"
 alias gc="git commit"
@@ -55,6 +57,7 @@ alias rc="rails c"
 alias ms="make start"
 alias routes="rails routes"
 alias routesg="routes | grep"
+alias rr="routesg"
 alias rdb="rails db:migrate"
 alias rdbt="rails db:migrate RAILS_ENV=test"
 alias rdbr="rails db:rollback"
@@ -67,6 +70,7 @@ alias tml="tmux list-sessions"
 alias tma="tmux -2 attach -t"
 alias t="mux s"
 alias tmk="tmux kill-session -t"
+alias tn="tmux new-session -d -s"
 
 # alias "c {x}" to do "cd ~/dev/{x}" with tab completion
 c() { cd ~/dev/$1; }
