@@ -14,8 +14,9 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 # add custom scripts to path
 PATH="$PATH:$HOME/dotfiles-local/bin"
-PATH="$PATH:$HOME/dotfiles-local/scripts"
+PATH="$HOME/dotfiles-local/scripts:$PATH"
 PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export PATH
 
 # Zshell config
@@ -26,7 +27,11 @@ bindkey '' autosuggest-execute
 # fzf -- use Ctrl+T to open auto-complete list
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_OPS='--bind up:preview-up,down:preview-down'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+autoload -U promptinit; promptinit
+prompt pure
 
 precmd() {
   # sets the tab title to current dir
