@@ -1,10 +1,12 @@
 # use 256-color terminal with italics support
-set -g default-terminal 'tmux-256color-itlic'
+set -g default-terminal 'tmux-256color-italic'
 set -as terminal-overrides ',xterm*:Tc:sitm=\E[3m'
 
 # set terminal window title
 set -g set-titles on
 set -g set-titles-string "#{session_name} [tmux]"
+
+set -g status-interval 5   # update status line every 5 seconds
 
 setw -g mouse on            # allow mouse
 set-option -s escape-time 0 # remove escape delay
@@ -39,8 +41,12 @@ bind x kill-pane
 # switch windows with C-h and C-l
 unbind n
 unbind p
-bind -r C-h previous-window # select previous window
-bind -r C-l next-window     # select next window
+bind C-h previous-window # select previous window
+bind C-l next-window     # select next window
+
+# reorder the current window with C-S left/right
+bind -n C-S-Left swap-window -t -1
+bind -n C-S-Right swap-window -t +1
 
 # select windows with Alt-number
 # in iTerm, to set up, go to profiles->keys, map option to Esc+
