@@ -1,5 +1,12 @@
 # Local Dotfiles
 
+**Note:** This repository is no longer used or maintained. My dotfiles are now
+managed in [stevehanson/dotfiles](https://github.com/stevehanson/dotfiles).
+
+The readme below is no longer relevant, though I'm preserving it for now.
+
+---------
+
 These are my local dotfile overrides which sit on top of thoughtbot's dotfiles. To use these, first install the base [thoughtbot
 dotfiles](https://github.com/stevehanson/dotfiles). Then, clone this repo into
 `~/dotfiles-local` and run `rcup`. 
